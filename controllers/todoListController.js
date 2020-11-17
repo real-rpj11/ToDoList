@@ -1,6 +1,6 @@
 const todoList = require("../models/todoListSchema");
 
-
+//getting all task
 const getAll = async(req, res) => {
     try {
         const todos = await todoList.find();
@@ -18,6 +18,7 @@ const getAll = async(req, res) => {
     }
 }
 
+//create new task
 const createTodo = async(req, res) => {
     try {
         const todos = {
@@ -41,6 +42,7 @@ const createTodo = async(req, res) => {
 
 }
 
+//deleting one task by id
 const deleteTodo = async(req, res) => {
     try {
         const result = await todoList.deleteOne({ _id: req.params.id })
@@ -56,6 +58,7 @@ const deleteTodo = async(req, res) => {
     }
 }
 
+//updating one task
 const updateTodo = async(req, res) => {
     try {
         const data = {
@@ -78,6 +81,7 @@ const updateTodo = async(req, res) => {
     }
 }
 
+//getting one task to be updated by id
 const getUpdatedTodo = async(req, res) => {
     try {
         const todos = await todoList.findOne({ _id: req.params.id });
