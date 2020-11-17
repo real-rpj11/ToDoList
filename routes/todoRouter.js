@@ -9,5 +9,4 @@ router.post('/:id', todoListController.deleteTodo) //delete one task by id
 router.get('/:id', todoListController.getUpdatedTodo) //get one task to be updated by id
 router.post('/updated/:id', todoListController.updateTodo) //update one the task
 
-
 module.exports = router;

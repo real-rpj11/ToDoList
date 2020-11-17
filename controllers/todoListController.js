@@ -58,29 +58,6 @@ const deleteTodo = async(req, res) => {
     }
 }
 
-//updating one task
-const updateTodo = async(req, res) => {
-    try {
-        const data = {
-            date: req.body.date,
-            day: req.body.day,
-            title: req.body.task
-        }
-        const result = await todoList.updateOne({ _id: req.params.id }, { $set: data })
-
-        if (!result) {
-            console.log("error")
-            return res.status(400).json({
-                error: "error",
-            });
-        }
-        res.redirect('/')
-
-    } catch (e) {
-        console.log(e)
-    }
-}
-
 //getting one task to be updated by id
 const getUpdatedTodo = async(req, res) => {
     try {
@@ -97,6 +74,29 @@ const getUpdatedTodo = async(req, res) => {
         });
     }
 }
+
+//updating one task by id
+const updateTodo = async(req, res) => {
+    try {
+        const data = {
+            date: req.body.date,
+            day: req.body.day,
+            title: req.body.task
+        }
+        const result = await todoList.updateOne({ _id: req.params.id }, { $set: data })
+
+        if (!result) {
+            console.log("error")
+            return res.status(400).json({
+                error: "error",
+            });
+        }
+        res.redirect('/')
+    } catch (e) {
+        console.log(e)
+    }
+}
+
 
 
 module.exports = {
